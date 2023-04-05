@@ -1,0 +1,26 @@
+type DealContract @entity {
+  id: ID!
+  deals: [DealToken!]! @derivedFrom(field: "contract")
+  merchant: String!
+  baseUri: String!
+}
+type DealToken @entity {
+  id: ID!
+  contract: DealContract!
+  tokenId: BigInt!
+  maxSupply: BigInt!
+  totalSupply: BigInt!
+  expirationDate: BigInt!
+  uri: String!
+}
+type DealOwner @entity {
+  id: ID!
+  userDeals: [UserDeal!]! @derivedFrom(field: "owner")
+}
+type UserDeal @entity {
+  id: ID!
+  owner: DealOwner!
+  detail: DealToken!
+  issuedBalance: BigInt!
+  redeemedBalance: BigInt!
+}
