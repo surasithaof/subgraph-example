@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const prompts = require("prompts")
-const shell = require("shelljs")
 const fs = require("fs")
 
 async function run() {
@@ -53,6 +53,12 @@ async function run() {
       },
     },
   ])
+  if (
+    !response?.network ||
+    !response?.startBlock ||
+    !response?.dealFactoryContractAddresses
+  )
+    return
 
   const config = {
     network: response.network,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const prompts = require("prompts")
 const shell = require("shelljs")
 
@@ -11,12 +12,15 @@ async function run() {
       { title: "Dev", value: "dev" },
     ],
   })
+  if (!environment?.environment) return
   const label = await prompts({
     type: "list",
     name: "label",
     message: `Which version label to use? (e.g. "v0.0.1")`,
     initial: "v0.0.1",
   })
+  if (!label?.label) return
+
   shell.exec(`npm run create-${environment.environment}`)
   shell.exec(`npm run deploy-${environment.environment} -- -l=${label.label}`)
 }

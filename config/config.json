@@ -2,6 +2,7 @@
   "network": "mainnet",
   "startBlock": 0,
   "dealFactoryContractAddresses": [
-    "0x0asdasdasdasd0asda1231231231123123123123"
+    "0x01541d12e0c4250DeE952a1f1cCaFD06B6043d64",
+    "0x2e9F4C0f1B48a4B9C196eb6129311A24b30f262C"
   ]
 }

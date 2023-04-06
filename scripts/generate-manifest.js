@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const Handlebars = require("handlebars")
 const fs = require("fs")
 
