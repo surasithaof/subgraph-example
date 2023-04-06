@@ -54,11 +54,12 @@ async function run() {
     },
   ])
   if (
-    !response?.network ||
-    !response?.startBlock ||
-    !response?.dealFactoryContractAddresses
-  )
+    response?.network == undefined ||
+    response?.startBlock == undefined ||
+    response?.dealFactoryContractAddresses == undefined
+  ) {
     return
+  }
 
   const config = {
     network: response.network,
