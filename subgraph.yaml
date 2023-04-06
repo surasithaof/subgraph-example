@@ -3,10 +3,33 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: DealsFactory
+    name: DealsFactory-1
     network: mainnet
     source:
-      address: "0x061056C6a437Eb5B08e92F6901E9129604267b34"
+      address: "0x01541d12e0c4250DeE952a1f1cCaFD06B6043d64"
+      abi: DealsFactory
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - DealsFactory
+        - Deals
+      abis:
+        - name: DealsFactory
+          file: ./abis/DealsFactory.json
+        - name: Deals
+          file: ./abis/Deals.json
+      eventHandlers:
+        - event: NewDealsContract(indexed address,indexed address)
+          handler: handleNewDealsContract
+      file: ./src/mapping.ts
+  - kind: ethereum/contract
+    name: DealsFactory-2
+    network: mainnet
+    source:
+      address: "0x2e9F4C0f1B48a4B9C196eb6129311A24b30f262C"
       abi: DealsFactory
       startBlock: 0
     mapping:

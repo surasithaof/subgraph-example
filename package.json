@@ -2,7 +2,7 @@
   "name": "example",
   "license": "UNLICENSED",
   "scripts": {
-    "prepare:mainnet": "rm subgraph.yaml && mustache config/mainnet.json subgraph.template.yaml > subgraph.yaml",
+    "prepare": "node scripts/generate-manifest.ts",
     "compile": "rm -rf generated && npm run codegen && npm run build",
     "codegen": "graph codegen",
     "build": "graph build",
@@ -14,10 +14,11 @@
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.44.0",
-    "@graphprotocol/graph-ts": "0.29.1",
-    "mustache": "^4.2.0"
+    "@graphprotocol/graph-ts": "0.29.1"
   },
   "devDependencies": {
-    "matchstick-as": "0.5.0"
+    "matchstick-as": "0.5.0",
+    "handlebars": "^4.7.7",
+    "ts-node": "^10.9.1"
   }
 }

@@ -6,14 +6,14 @@ import {
   UserDeal,
 } from "../generated/schema"
 import { Deals as DealsTemplate } from "../generated/templates"
-import { NewDealsContract as NewDealsContractEvent } from "../generated/DealsFactory/DealsFactory"
+import { NewDealsContract as NewDealsContractEvent } from "../generated/DealsFactory-1/DealsFactory"
 
 import { log } from "@graphprotocol/graph-ts"
 import {
   Deals,
   NewDeal as NewDealEvent,
   TransferSingle as TransferSingleEvent,
-} from "../generated/DealsFactory/Deals"
+} from "../generated/DealsFactory-1/Deals"
 
 const ZERO_ADDRESS_STRING = "0x0000000000000000000000000000000000000000"
 const ZERO = BigInt.fromI32(0)
