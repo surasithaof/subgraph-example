@@ -1,4 +1,4 @@
-import { Address, BigDecimal, BigInt } from "@graphprotocol/graph-ts"
+import { Address, BigInt } from "@graphprotocol/graph-ts"
 import {
   DealContract,
   DealOwner,
@@ -17,7 +17,6 @@ import {
 
 const ZERO_ADDRESS_STRING = "0x0000000000000000000000000000000000000000"
 const ZERO = BigInt.fromI32(0)
-const ONE = BigInt.fromI32(1)
 
 export function handleNewDealsContract(event: NewDealsContractEvent): void {
   log.info("handleNewDealsContract called", [])
@@ -113,7 +112,6 @@ export function handleTransferSingle(event: TransferSingleEvent): void {
   }
 
   // Token Part
-  const operator = event.params.operator
   const from = event.params.from
   const to = event.params.to
   const tokenId = event.params.id
