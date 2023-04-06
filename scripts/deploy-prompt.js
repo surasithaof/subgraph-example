@@ -12,14 +12,14 @@ async function run() {
       { title: "Dev", value: "dev" },
     ],
   })
-  if (!environment?.environment) return
+  if (environment?.environment == undefined) return
   const label = await prompts({
     type: "list",
     name: "label",
     message: `Which version label to use? (e.g. "v0.0.1")`,
     initial: "v0.0.1",
   })
-  if (!label?.label) return
+  if (label?.label == undefined) return
 
   shell.exec(`npm run create-${environment.environment}`)
   shell.exec(`npm run deploy-${environment.environment} -- -l=${label.label}`)
