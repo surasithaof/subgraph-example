@@ -46,7 +46,7 @@ async function run() {
         )
         if (invalidAddress) {
           return `Invalid contract address: ${invalidAddress}`
-        } else if (addresses.length == 0) {
+        } else if (value.length == 0) {
           return `Please input at least one contract address`
         }
         return true
