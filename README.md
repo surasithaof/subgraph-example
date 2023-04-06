@@ -22,7 +22,7 @@ yarn
 
 In [`configs/config.json`](config/config.json), you should config which factory contract addresses to listen and start block number to sync data.
 
-> For Kaleido Non-Prod, `startBlock` must be latest block! because we are not have archive node that store historical states.
+> If you're not have archive node that store historical states, you should set `startBlock` to be latest block!
 
 ### Deployment to Local Environment
 
@@ -30,10 +30,10 @@ In [`configs/config.json`](config/config.json), you should config which factory 
 2. run `docker-compose up -d` to start graphnode, IPFS and database.
 3. Deploy contract to your ganache (DealsFactoryContract and DealsContract). You can deploy contracts using [Remix IDE](https://remix.ethereum.org/) or [Hardhat](https://hardhat.org/)
 4. Set deal factory contract addresses and start block in [`configs/config.json`](config/config.json).
-5. run `npm run prepare` to replace config value to create subgraph manifest file ([`subgraph.yaml`](subgraph.yaml)) from subgraph template ([`subgraph.template.yaml`](subgraph.template.yaml)).
+5. run `npm run generate` to replace config value to create subgraph manifest file ([`subgraph.yaml`](subgraph.yaml)) from subgraph template ([`subgraph.template.yaml`](src/subgraph.template.yaml)).
 6. run `npm run compile` to compile the code to WebAssembly
-7. run `npm run local:setup` to create subgrap. (You can run only first time, If you create subgraph already, you don't need to run this command again)
-8. run `npm run local:deploy` to deploy subgraph.
+7. run `npm run create-local` to create subgrap. (You can run only first time, If you create subgraph already, you don't need to run this command again)
+8. run `npm run deploy-local` to deploy subgraph.
 
 Then, you can access subgraph endpoint at [`http://localhost:8000/subgraphs/name/abc/vms`](http://localhost:8000/subgraphs/name/abc/vms).
 
@@ -41,10 +41,18 @@ Then, you can access subgraph endpoint at [`http://localhost:8000/subgraphs/name
 
 1. Deploy contracts (DealsFactoryContract and DealsContract)
 2. Set deal factory contract addresses and start block in [`configs/config.json`](config/config.json). (for Non-Prod use latest block heigh number for start block)
-3. run `npm run prepare` to replace config value to create subgraph manifest file ([`subgraph.yaml`](subgraph.yaml)) from subgraph template ([`subgraph.template.yaml`](subgraph.template.yaml)).
-4. run `npm run compile` to replace config value to create subgraph manifest file (`subgraph.yaml`) from subgraph template (`subgraph.template.yaml`).
-5. run `npm run <dev|stg|prod>:setup` to create subgrap. (You can run only first time, If you create subgraph already, you don't need to run this command again)
-6. run `npm run <dev|stg|prod>:deploy` to deploy subgraph.
+3. run `npm run generate` to replace config value to create subgraph manifest file ([`subgraph.yaml`](subgraph.yaml)) from subgraph template ([`subgraph.template.yaml`](src/subgraph.template.yaml)).
+4. run `npm run compile` to compile the code to WebAssembly.
+5. run `npm run create-<dev|stg|prod>` to create subgrap. (You can run only first time, If you create subgraph already, you don't need to run this command again)
+6. run `npm run deploy-<dev|stg|prod>` to deploy subgraph.
+
+### Deployment using promt
+
+1. Deploy contracts (DealsFactoryContract and DealsContract)
+2. run `npm run set-config` to set config you can select network, set start block and set factory contract addresses, the prompt will generate [`configs/config.json`](config/config.json) file.
+3. run `npm run generate` to replace config value to create subgraph manifest file ([`subgraph.yaml`](subgraph.yaml)) from subgraph template ([`subgraph.template.yaml`](src/subgraph.template.yaml)).
+4. run `npm run compile` to compile the code to WebAssembly.
+5. run `npm run deploy` to deploy.
 
 ### Query
 

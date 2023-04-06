@@ -1,24 +1,26 @@
 {
-  "name": "example",
+  "name": "subgraph-example",
   "license": "UNLICENSED",
   "scripts": {
-    "prepare": "node scripts/generate-manifest.ts",
-    "compile": "rm -rf generated && npm run codegen && npm run build",
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ test/example",
     "create-local": "graph create --node http://localhost:8020/ test/example",
     "remove-local": "graph remove --node http://localhost:8020/ test/example",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 test/example",
-    "test": "graph test"
+    "test": "graph test",
+    "set-config": "node scripts/set-config-prompt.js",
+    "generate": "node scripts/generate-manifest.js",
+    "compile": "rm -rf generated && npm run codegen && npm run build",
+    "deploy": "node scripts/deploy-prompt.js"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.44.0",
     "@graphprotocol/graph-ts": "0.29.1"
   },
   "devDependencies": {
-    "matchstick-as": "0.5.0",
     "handlebars": "^4.7.7",
-    "ts-node": "^10.9.1"
+    "matchstick-as": "0.5.0",
+    "prompts": "^2.4.2",
+    "shelljs": "^0.8.5"
   }
 }
