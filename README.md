@@ -1,8 +1,8 @@
-# ABC VMS - Subgraph
+# Example - Subgraph
 
 ## Overview
 
-This subgraph for the ABC VMS project (ERC1155 for deals).
+This subgraph example project. that is support Factoy pattern also.
 
 ### Setting Up
 
@@ -35,7 +35,7 @@ In [`configs/config.json`](config/config.json), you should config which factory 
 7. run `npm run create-local` to create subgrap. (You can run only first time, If you create subgraph already, you don't need to run this command again)
 8. run `npm run deploy-local` to deploy subgraph.
 
-Then, you can access subgraph endpoint at [`http://localhost:8000/subgraphs/name/abc/vms`](http://localhost:8000/subgraphs/name/abc/vms).
+Then, you can access subgraph endpoint at [`http://localhost:8000/subgraphs/name/test/example`](http://localhost:8000/subgraphs/name/test/example).
 
 ### Deployment to Other Environment
 
@@ -60,7 +60,6 @@ You can see the example queries document [here](docs/queries.md)
 
 ### Referent
 
-- [SubGraph configuration and deploy](https://ascendbit.atlassian.net/wiki/spaces/DEVOPS/pages/2165833813/SubGraph+configuration+and+deploy)
 - [Deploy Subgraphs to Any EVM](https://medium.com/coinmonks/deploy-subgraphs-to-any-evm-aaaccc3559f)
 - [OpenZeppelin Subgraphs](https://docs.openzeppelin.com/subgraphs/0.1.x/)
 - [OpenZeppelin example query](https://docs.openzeppelin.com/subgraphs/0.1.x/examples/query)

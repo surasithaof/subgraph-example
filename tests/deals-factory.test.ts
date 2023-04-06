@@ -22,7 +22,7 @@ describe("Describe entity assertions", () => {
     const merchant = Address.fromString(
       "0xf13296793E2cef69dd319dB31A64647C2A434B17"
     )
-    const baseUri = "vms.test"
+    const baseUri = "example.test"
 
     const argsArray: Array<ethereum.Value> = [
       ethereum.Value.fromAddress(merchant),
@@ -62,7 +62,7 @@ describe("Describe entity assertions", () => {
     assert.entityCount("DealContract", 1)
 
     const expectMerchant = "0xf13296793e2cef69dd319db31a64647c2a434b17"
-    const expectBaseUri = "vms.test"
+    const expectBaseUri = "example.test"
     // 0x74586a1576e5edfee54f1aa425a31976a8d15e78 is the default address used in newMockEvent() function
     assert.fieldEquals(
       "DealContract",

@@ -54,7 +54,7 @@ query GetIssuedDealsByOwner(
             },
             "expirationDate": "1682914736",
             "tokenId": "1",
-            "uri": "https://vms.test/VMSM001/deals/{id}"
+            "uri": "https://example.test/M001/deals/{id}"
           },
           "issuedBalance": "1"
         }
@@ -132,7 +132,7 @@ query GetExpiredOrRedeemedDealsByOwner(
             },
             "expirationDate": "1683087751",
             "tokenId": "1",
-            "uri": "https://vms.test/VMSM01/deals/{id}"
+            "uri": "https://example.test/M01/deals/{id}"
           },
           "redeemedBalance": "1",
           "issuedBalance": "1"
