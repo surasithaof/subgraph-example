@@ -46,7 +46,7 @@ Then, you can access subgraph endpoint at [`http://localhost:8000/subgraphs/name
 5. run `npm run create-<dev|stg|prod>` to create subgrap. (You can run only first time, If you create subgraph already, you don't need to run this command again)
 6. run `npm run deploy-<dev|stg|prod>` to deploy subgraph.
 
-### Deployment using promt
+### Deployment using prompts
 
 1. Deploy contracts (DealsFactoryContract and DealsContract)
 2. run `npm run set-config` to set config you can select network, set start block and set factory contract addresses, the prompt will generate [`configs/config.json`](config/config.json) file.
