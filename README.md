@@ -56,7 +56,7 @@ Then, you can access subgraph endpoint at [`http://localhost:8000/subgraphs/name
 
 ### Query
 
-You can see the example queries document [here](docs/queries.md)
+You can see the example queries document [here](docs/README.md)
 
 ### Referent
 
