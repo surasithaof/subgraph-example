@@ -137,13 +137,13 @@ export function handleTransferSingle(event: TransferSingleEvent): void {
     log.info("dealToken create : {}", [dealToken.id])
     dealToken.save()
   }
-  // Issue Voucher
+  const timeStamp = event.block.timestamp
   if (from.toHexString() == ZERO_ADDRESS_STRING) {
     const newOwner = fetchOwner(to)
-    handleIssueVoucher(dealTokenId, newOwner, amount)
+    handleIssueVoucher(dealTokenId, newOwner, amount, timeStamp)
   } else if (to.toHexString() == contract.merchant) {
     const oldOwner = fetchOwner(from)
-    handleRedeemVoucher(dealTokenId, oldOwner, amount)
+    handleRedeemVoucher(dealTokenId, oldOwner, amount, timeStamp)
   }
 }
 
@@ -151,7 +151,9 @@ function handleIssueVoucher(
   dealTokenId: string,
   newOwner: DealOwner,
   // eslint-disable-next-line @typescript-eslint/ban-types
-  amount: BigInt
+  amount: BigInt,
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  timeStamp: BigInt
 ): void {
   log.info("handleTransferSingle start issue voucher", [])
 
@@ -177,6 +179,7 @@ function handleIssueVoucher(
   }
 
   userDeal.issuedBalance = userDeal.issuedBalance.plus(amount)
+  userDeal.latestIssueTime = timeStamp
   userDeal.save()
 
   dealToken.totalSupply = dealToken.totalSupply.plus(amount)
@@ -186,8 +189,11 @@ function handleIssueVoucher(
 
 function handleRedeemVoucher(
   dealTokenId: string,
-  oldOwner: DealOwner, // eslint-disable-next-line @typescript-eslint/ban-types
-  amount: BigInt
+  oldOwner: DealOwner,
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  amount: BigInt,
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  timeStamp: BigInt
 ): void {
   log.info("handleTransferSingle start redeem voucher", [])
 
@@ -210,6 +216,7 @@ function handleRedeemVoucher(
 
   userDeal.redeemedBalance = userDeal.redeemedBalance.plus(amount)
   userDeal.issuedBalance = userDeal.issuedBalance.minus(amount)
+  userDeal.latestRedeemTime = timeStamp
   userDeal.save()
 
   log.info("handleTransferSingle complete redeem voucher", [])
